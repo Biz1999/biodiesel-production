@@ -1,0 +1,30 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: test-2
+  labels:
+    name: test-2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-player-2
+  namespace: test-2
+  labels:
+    app: app-player-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-player-2
+  template:
+    metadata:
+      labels:
+        app: app-player-2
+    spec:
+      containers:
+        - name: app-player-2
+          image: biz1999/test:1.0.0
+          ports:
+            - name: web
+              containerPort: 8080
