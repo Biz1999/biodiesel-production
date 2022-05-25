@@ -1,4 +1,4 @@
-package com.biodiesel.industry.biodiesel.oil.tank.adapter.output.helper
+package com.biodiesel.industry.biodiesel.oil.tank.adapter.output.database.helper
 
 import com.biodiesel.industry.biodiesel.oil.tank.adapter.output.database.entity.OilTankEntity
 import com.biodiesel.industry.biodiesel.oil.tank.application.domain.OilTank

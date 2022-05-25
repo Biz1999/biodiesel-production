@@ -1,8 +1,8 @@
-package com.biodiesel.industry.biodiesel.oil.tank.application.service.service
+package com.biodiesel.industry.biodiesel.oil.tank.application.service
 
 import com.biodiesel.industry.biodiesel.oil.tank.adapter.output.database.DatabaseRepository
 import com.biodiesel.industry.biodiesel.oil.tank.application.domain.OilTank
-import com.biodiesel.industry.biodiesel.oil.tank.application.service.TankSupplyUseCase
+import com.biodiesel.industry.biodiesel.oil.tank.application.port.input.TankSupplyUseCase
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 

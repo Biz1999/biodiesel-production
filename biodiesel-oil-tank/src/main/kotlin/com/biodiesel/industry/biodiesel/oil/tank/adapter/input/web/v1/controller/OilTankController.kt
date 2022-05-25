@@ -5,8 +5,8 @@ import com.biodiesel.industry.biodiesel.oil.tank.adapter.input.web.v1.helper.toT
 import com.biodiesel.industry.biodiesel.oil.tank.adapter.input.web.v1.helper.toTankSupplyResponse
 import com.biodiesel.industry.biodiesel.oil.tank.adapter.input.web.v1.response.TankOutputResponse
 import com.biodiesel.industry.biodiesel.oil.tank.adapter.input.web.v1.response.TankSupplyResponse
-import com.biodiesel.industry.biodiesel.oil.tank.application.service.TankOutputUseCase
-import com.biodiesel.industry.biodiesel.oil.tank.application.service.TankSupplyUseCase
+import com.biodiesel.industry.biodiesel.oil.tank.application.port.input.TankOutputUseCase
+import com.biodiesel.industry.biodiesel.oil.tank.application.port.input.TankSupplyUseCase
 import org.slf4j.LoggerFactory
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.web.bind.annotation.RestController
