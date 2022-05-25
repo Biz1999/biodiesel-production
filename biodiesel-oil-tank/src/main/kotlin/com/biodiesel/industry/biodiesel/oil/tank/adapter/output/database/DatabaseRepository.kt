@@ -6,9 +6,9 @@ import com.biodiesel.industry.biodiesel.oil.tank.adapter.output.database.helper.
 import com.biodiesel.industry.biodiesel.oil.tank.application.domain.OilTank
 import com.biodiesel.industry.biodiesel.oil.tank.application.service.helper.toDomain
 import org.slf4j.LoggerFactory
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Repository
 
-@Service
+@Repository
 class DatabaseRepository(
     private val oilTankRepository: PostgresRepository
 ){
