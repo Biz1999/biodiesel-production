@@ -19,15 +19,13 @@ class OilTankController(
     private val logger = LoggerFactory.getLogger(OilTankController::class.java)
 
     override fun performOilSupply(oilRequest: OilRequest): ResponseEntity<*> {
-
-
-        logger.info("Starting request to perform oil supply with [OilRequest=${Gson().toJson(oilRequest)}]")
+        logger.info("Starting request to perform oil supply with [OilRequest=${oilRequest}]")
 
         val oilResponse = oilSupplyReactorUseCase.execute(oilRequest.toDomain()).toOilResponse()
 
         return ResponseEntity.ok(oilResponse)
             .also {
-                logger.info("Finished process to perform oil supply with response [OilResponse=${Gson().toJson(it)}]")
+                logger.info("Finished process to perform oil supply with response [OilResponse=${it}]")
             }
     }
 }

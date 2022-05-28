@@ -8,5 +8,5 @@ interface DatabasePort {
 
     fun getReactor(): Reactor
 
-    fun updateOilSupply(reactor: Reactor, amount: Double, status: Status): OilReactor
+    fun updateOilSupply(reactor: Reactor, amount: Double): OilReactor
 }

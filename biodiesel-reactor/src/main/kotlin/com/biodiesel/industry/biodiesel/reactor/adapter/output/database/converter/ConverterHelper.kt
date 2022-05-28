@@ -16,9 +16,9 @@ fun ReactorEntity.toDomain(): Reactor = Reactor(
     outputTime = outputTime
 )
 
-fun Reactor.toOilEntity(amount: Double, status: String?): ReactorEntity = ReactorEntity(
+fun Reactor.toOilEntity(amount: Double): ReactorEntity = ReactorEntity(
     id = 0,
-    status = status ?: this.status.name,
+    status = this.status.name,
     amount = this.amount + amount,
     oilAmount = oilAmount + amount,
     naohAmount = naohAmount,
@@ -28,6 +28,7 @@ fun Reactor.toOilEntity(amount: Double, status: String?): ReactorEntity = Reacto
 )
 
 fun ReactorEntity.toOilDomain(): OilReactor = OilReactor(
+    amount = amount,
     oilAmount = oilAmount,
     oilSupplyTime = oilSupplyTime
 )

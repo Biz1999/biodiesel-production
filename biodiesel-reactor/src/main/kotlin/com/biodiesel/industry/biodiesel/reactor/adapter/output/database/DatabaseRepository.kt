@@ -27,12 +27,12 @@ class DatabaseRepository(
             }
     }
 
-    override fun updateOilSupply(reactor: Reactor, amount: Double, status: Status): OilReactor {
+    override fun updateOilSupply(reactor: Reactor, amount: Double): OilReactor {
         logger.info("Starting process to update reactor info with amount=$amount L...")
 
-        return reactorRepository.save(reactor.toOilEntity(amount, status.name)).toOilDomain()
+        return reactorRepository.save(reactor.toOilEntity(amount)).toOilDomain()
             .also {
-                logger.info("Finished process to update reactor info with [OilReactor=${Gson().toJson(it)}")
+                logger.info("Finished process to update reactor info with [OilReactor=${it}")
             }
     }
 }
