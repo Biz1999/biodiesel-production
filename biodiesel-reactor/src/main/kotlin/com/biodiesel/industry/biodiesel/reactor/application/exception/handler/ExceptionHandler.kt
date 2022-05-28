@@ -1,4 +1,4 @@
-package com.biodiesel.industry.biodiesel.reactor.adapter.input.web.v1.config
+package com.biodiesel.industry.biodiesel.reactor.application.exception.handler
 
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.ControllerAdvice

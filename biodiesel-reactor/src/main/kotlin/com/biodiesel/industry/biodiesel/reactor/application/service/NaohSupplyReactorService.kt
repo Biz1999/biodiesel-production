@@ -1,26 +1,26 @@
 package com.biodiesel.industry.biodiesel.reactor.application.service
 
 import com.biodiesel.industry.biodiesel.reactor.adapter.output.database.DatabaseRepository
-import com.biodiesel.industry.biodiesel.reactor.application.domain.EtohSupply
+import com.biodiesel.industry.biodiesel.reactor.application.domain.NaohSupply
 import com.biodiesel.industry.biodiesel.reactor.application.domain.Reactor
-import com.biodiesel.industry.biodiesel.reactor.application.port.input.EtohSupplyReactorUseCase
+import com.biodiesel.industry.biodiesel.reactor.application.port.input.NaohSupplyReactorUseCase
 import com.biodiesel.industry.biodiesel.reactor.application.service.converter.toDomain
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 
 @Service
-class EtohSupplyReactorService(
+class NaohSupplyReactorService(
     private val reactorRepository: DatabaseRepository,
-    @Value("\${etoh-supply.maximumAmount}")
-    private val etohMaximumAmount: Double
-): EtohSupplyReactorUseCase {
-    private val logger = LoggerFactory.getLogger(EtohSupplyReactorService::class.java)
+    @Value("\${naoh-supply.maximumAmount}")
+    private val naohMaximumAmount: Double
+): NaohSupplyReactorUseCase {
+    private val logger = LoggerFactory.getLogger(NaohSupplyReactorService::class.java)
 
-    override fun execute(etohSupply: EtohSupply): Reactor {
-        logger.info("Starting process to supply reactor with EtOH. [EtohSupply=$etohSupply")
+    override fun execute(naohSupply: NaohSupply): Reactor {
+        logger.info("Starting process to supply reactor with EtOH. [EtohSupply=$naohSupply")
 
-        etohSupply.isInvalidAmount()
+        naohSupply.isInvalidAmount()
 
         val reactor = reactorRepository.getReactor()
 
@@ -30,22 +30,21 @@ class EtohSupplyReactorService(
                     logger.error("Reactor unavailable due to processing")
                 }
 
-        if (reactor.etohAmount >= etohMaximumAmount)
+        if (reactor.naohAmount >= naohMaximumAmount)
             throw IllegalArgumentException("EtOH limits can't be exceed")
                 .also {
                     logger.error("EtOH supply limit reached")
                 }
 
-        val etohSupplyAmount = etohMaximumAmount - reactor.etohAmount
+        val naohSupplyAmount = naohMaximumAmount - reactor.naohAmount
 
-        return if (etohSupplyAmount >= etohSupply.amount) {
-            reactorRepository.updateEtohSupply(reactor, etohSupply.amount).toDomain(reactor)
+        return if (naohSupplyAmount >= naohSupply.amount) {
+            reactorRepository.updateNaohSupply(reactor, naohSupply.amount).toDomain(reactor)
         } else {
-            reactor.returnedAmount = etohSupply.amount - etohSupplyAmount
-            reactorRepository.updateEtohSupply(reactor, etohSupplyAmount).toDomain(reactor)
+            reactor.returnedAmount = naohSupply.amount - naohSupplyAmount
+            reactorRepository.updateNaohSupply(reactor, naohSupplyAmount).toDomain(reactor)
         }.also {
             logger.info("Finished process to supply reactor with EtOH. [Reactor=$it")
         }
     }
-
 }

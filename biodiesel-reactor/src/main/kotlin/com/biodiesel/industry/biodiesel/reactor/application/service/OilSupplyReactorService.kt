@@ -5,7 +5,6 @@ import com.biodiesel.industry.biodiesel.reactor.application.domain.OilSupply
 import com.biodiesel.industry.biodiesel.reactor.application.domain.Reactor
 import com.biodiesel.industry.biodiesel.reactor.application.port.input.OilSupplyReactorUseCase
 import com.biodiesel.industry.biodiesel.reactor.application.service.converter.toDomain
-import com.google.gson.Gson
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
