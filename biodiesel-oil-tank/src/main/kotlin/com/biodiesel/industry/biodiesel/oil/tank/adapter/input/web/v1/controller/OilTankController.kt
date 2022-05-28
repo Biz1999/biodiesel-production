@@ -35,7 +35,7 @@ class OilTankController(
             }
     }
 
-//    @Scheduled(fixedDelayString = ("\${output.time}"), initialDelay = 2000)
+    @Scheduled(fixedDelayString = ("\${output.time}"), initialDelay = 2000)
     override fun postOutput(): TankOutputResponse {
         logger.info("Starting process to empty the oil tank...")
 

@@ -4,6 +4,7 @@ import com.biodiesel.industry.biodiesel.oil.tank.adapter.output.database.Databas
 import com.biodiesel.industry.biodiesel.oil.tank.adapter.output.feign.reactor.ReactorService
 import com.biodiesel.industry.biodiesel.oil.tank.application.domain.OilTank
 import com.biodiesel.industry.biodiesel.oil.tank.application.port.input.TankOutputUseCase
+import com.biodiesel.industry.biodiesel.oil.tank.application.port.output.ReactorPort
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service
 @Service
 class TankOutputService(
     private val oilTankRepository: DatabaseRepository,
-    private val reactorService: ReactorService,
+    private val reactorPort: ReactorPort,
     @Value("\${oil-tank.output}")
     private val oilTankOutput: Double
 ) : TankOutputUseCase {
@@ -26,7 +27,7 @@ class TankOutputService(
 
         logger.info("Starting process to supply reactor information with ${-oilTankOutput} L")
 
-        reactorService.performReactorSupply(oilTank)
+        reactorPort.performReactorSupply(oilTank)
 
         return oilTankRepository.updateTankAmountByOutput(oilTankOutput, oilTank)
             .also {
