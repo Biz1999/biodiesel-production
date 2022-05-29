@@ -1,6 +1,6 @@
 package com.biodiesel.industry.biodiesel.glycerin.tank.service
 
-import com.biodiesel.industry.biodiesel.glycerin.tank.integration.database.DatabaseRepository
+import com.biodiesel.industry.biodiesel.glycerin.tank.model.database.DatabaseRepository
 import com.biodiesel.industry.biodiesel.glycerin.tank.model.GlycerinTank
 import com.biodiesel.industry.biodiesel.glycerin.tank.model.request.GlycerinSupply
 import com.biodiesel.industry.biodiesel.glycerin.tank.service.converter.toDomain

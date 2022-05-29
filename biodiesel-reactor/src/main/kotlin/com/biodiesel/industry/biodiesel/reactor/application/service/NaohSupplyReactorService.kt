@@ -18,7 +18,7 @@ class NaohSupplyReactorService(
     private val logger = LoggerFactory.getLogger(NaohSupplyReactorService::class.java)
 
     override fun execute(naohSupply: NaohSupply): Reactor {
-        logger.info("Starting process to supply reactor with EtOH. [EtohSupply=$naohSupply")
+        logger.info("Starting process to supply reactor with NaOH. [EtohSupply=$naohSupply")
 
         naohSupply.isInvalidAmount()
 

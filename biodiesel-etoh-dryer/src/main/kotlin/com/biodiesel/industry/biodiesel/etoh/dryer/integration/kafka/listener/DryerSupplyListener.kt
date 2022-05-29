@@ -14,13 +14,13 @@ class DryerSupplyListener(
 
     @KafkaListener(id = "receiveEtohDryer", topics = ["\${topic.name.etoh.listener}"])
     fun listenEtohDryerSupply(message: String) {
-        logger.info("Starting process to perform biodiesel supply...")
+        logger.info("Starting process to perform EtOH dryer supply...")
 
-        val biodieselSupply = message.jsonToObject()
+        val etohDryerSupply = message.jsonToObject()
 
-        etohDryerSupplyService.execute(biodieselSupply)
+        etohDryerSupplyService.execute(etohDryerSupply)
             .also {
-                logger.info("Finished process to perform biodiesel supply. [BiodieselTank=$it]")
+                logger.info("Finished process to perform EtOH dryer supply. [EtOH dryer=$it]")
             }
     }
 }
