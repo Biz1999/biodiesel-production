@@ -1,14 +1,14 @@
 package com.biodiesel.industry.biodiesel.oil.tank.adapter.output.database
 
 import com.biodiesel.industry.biodiesel.oil.tank.adapter.output.database.repository.PostgresRepository
-import com.biodiesel.industry.biodiesel.oil.tank.adapter.output.helper.toEntityOutput
-import com.biodiesel.industry.biodiesel.oil.tank.adapter.output.helper.toEntitySupply
+import com.biodiesel.industry.biodiesel.oil.tank.adapter.output.database.helper.toEntityOutput
+import com.biodiesel.industry.biodiesel.oil.tank.adapter.output.database.helper.toEntitySupply
 import com.biodiesel.industry.biodiesel.oil.tank.application.domain.OilTank
 import com.biodiesel.industry.biodiesel.oil.tank.application.service.helper.toDomain
 import org.slf4j.LoggerFactory
-import org.springframework.stereotype.Service
+import org.springframework.stereotype.Repository
 
-@Service
+@Repository
 class DatabaseRepository(
     private val oilTankRepository: PostgresRepository
 ){
