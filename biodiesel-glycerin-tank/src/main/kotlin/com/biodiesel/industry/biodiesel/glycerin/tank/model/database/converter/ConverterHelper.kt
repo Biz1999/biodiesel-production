@@ -1,4 +1,4 @@
-package com.biodiesel.industry.biodiesel.glycerin.tank.integration.database.converter
+package com.biodiesel.industry.biodiesel.glycerin.tank.model.database.converter
 
 import com.biodiesel.industry.biodiesel.glycerin.tank.model.GlycerinTank
 import com.biodiesel.industry.biodiesel.glycerin.tank.model.entity.GlycerinTankEntity

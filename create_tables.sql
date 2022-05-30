@@ -40,3 +40,40 @@ CREATE TABLE reactor(
 
 INSERT INTO reactor(id, status, amount, oil_amount, naoh_amount, etoh_amount, oil_supply_time, naoh_supply_time, etoh_supply_time, output_time)
 values(0, 'AVAILABLE',0.0, 0.0, 0.0, 0.0, current_timestamp, current_timestamp, current_timestamp, current_timestamp);
+
+
+CREATE TABLE biodiesel_tank(
+    id INT PRIMARY KEY,
+	amount DOUBLE PRECISION NOT NULL,
+	supply_time TIMESTAMP NOT NULL
+);
+
+INSERT INTO biodiesel_tank(id, amount, supply_time) values(0, 0.0, current_timestamp);
+
+
+CREATE TABLE glycerin_tank(
+    id INT PRIMARY KEY,
+	amount DOUBLE PRECISION NOT NULL,
+	supply_time TIMESTAMP NOT NULL
+);
+
+INSERT INTO glycerin_tank(id, amount, supply_time) values(0, 0.0, current_timestamp);
+
+CREATE TABLE etoh_dryer(
+    id INT PRIMARY KEY,
+	amount DOUBLE PRECISION NOT NULL,
+	supply_time TIMESTAMP NOT NULL,
+  	output_time TIMESTAMP NOT NULL
+);
+
+INSERT INTO etoh_dryer(id, amount, supply_time, output_time) values(0, 0.0, current_timestamp, current_timestamp);
+
+
+CREATE TABLE dryer(
+    id INT PRIMARY KEY,
+	amount DOUBLE PRECISION NOT NULL,
+	supply_time TIMESTAMP NOT NULL,
+  	output_time TIMESTAMP NOT NULL
+);
+
+INSERT INTO dryer(id, amount, supply_time, output_time) values(0, 0.0, current_timestamp, current_timestamp);

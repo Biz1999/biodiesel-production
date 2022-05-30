@@ -22,18 +22,18 @@ class DryerOutputService(
 
     @Scheduled(fixedRateString = "\${output.time}")
     fun execute() {
-        logger.info("Starting process to perform the dried etoh output ...")
+        logger.info("Starting process to perform the dried Biodiesel output ...")
 
         val dryer =  databaseRepository.getDryer()
 
         if (dryer.amount < dryerOutputAmount){
-            logger.info("Dryer can not leak insufficient EtOH")
+            logger.info("Dryer can not leak insufficient Biodiesel")
             return
         }
 
         databaseRepository.updateDryerAmountOutput(dryer)
             .also {
-                logger.info("Finished process to update dryer info. [EtohDryer=$it]")
+                logger.info("Finished process to update dryer info. [Dryer=$it]")
             }
         dryerOutputPublisher.publishMessage(toRequest(dryerOutputAmount, lostPercentage).objectToJson())
             .also {
