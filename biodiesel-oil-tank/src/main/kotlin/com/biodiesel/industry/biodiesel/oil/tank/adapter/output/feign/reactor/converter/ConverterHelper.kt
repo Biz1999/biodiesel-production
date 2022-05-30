@@ -6,11 +6,11 @@ import com.biodiesel.industry.biodiesel.oil.tank.application.domain.OilTank
 import com.biodiesel.industry.biodiesel.oil.tank.application.dto.OilTankReactor
 
 
-fun OilTank.toRequest(): SupplyRequest = SupplyRequest(
+fun OilTank.toRequest(amount: Double): SupplyRequest = SupplyRequest(
     amount = amount
 )
 
 fun SupplyResponse.toDomain(): OilTankReactor = OilTankReactor(
-    amount = amount,
+    amount = returnedAmount,
     supplyTime = supplyTime
 )

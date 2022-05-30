@@ -13,5 +13,5 @@ interface NaohTankApi {
     fun supplyNaohTank(): NaohSupplyTankResponse
 
     @PostMapping("/output")
-    fun outputNaohTank(): NaohOutputTankResponse
+    fun outputNaohTank(): NaohOutputTankResponse?
 }

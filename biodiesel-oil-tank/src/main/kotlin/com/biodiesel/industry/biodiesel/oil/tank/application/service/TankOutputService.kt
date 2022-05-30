@@ -27,9 +27,9 @@ class TankOutputService(
 
         logger.info("Starting process to supply reactor information with ${-oilTankOutput} L")
 
-        reactorPort.performReactorSupply(oilTank)
+        val oilReactor = reactorPort.performReactorSupply(oilTank)
 
-        return oilTankRepository.updateTankAmountByOutput(oilTankOutput, oilTank)
+        return oilTankRepository.updateTankAmountByOutput(oilTankOutput - oilReactor.amount, oilTank)
             .also {
                 logger.info("Finished process to supply reactor information. Tank=$it")
             }
