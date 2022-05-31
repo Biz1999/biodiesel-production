@@ -33,13 +33,17 @@ class NaohTankController(
             }
     }
 
-    //@Scheduled(fixedDelayString = ("\${output.time}"), initialDelay = 2000)
-    override fun outputNaohTank(): NaohOutputTankResponse {
-        logger.info("Starting process to empty the NaOH tank...")
+    @Scheduled(fixedDelayString = ("\${output.time}"), initialDelay = 2000)
+    override fun outputNaohTank(): NaohOutputTankResponse? =
+        try {
+            logger.info("Starting process to empty the NaOH tank...")
 
-        return tankOutputUseCase.execute().toTankOutputResponse()
-            .also {
-                logger.info("Finished process to empty the NaOH tank with TankOutputResponse=$it")
-            }
-    }
+            tankOutputUseCase.execute().toTankOutputResponse()
+                .also {
+                    logger.info("Finished process to empty the NaOH tank with TankOutputResponse=$it")
+                }
+        } catch (ex: Exception) {
+            logger.error("${ex.message}")
+            null
+        }
 }

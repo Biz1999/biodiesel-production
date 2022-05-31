@@ -77,3 +77,34 @@ CREATE TABLE dryer(
 );
 
 INSERT INTO dryer(id, amount, supply_time, output_time) values(0, 0.0, current_timestamp, current_timestamp);
+
+
+CREATE TABLE first_washer(
+    id INT PRIMARY KEY,
+	amount DOUBLE PRECISION NOT NULL,
+  	emulsion DOUBLE PRECISION NOT NULL,
+	supply_time TIMESTAMP NOT NULL,
+  	output_time TIMESTAMP NOT NULL
+);
+
+INSERT INTO first_washer(id, amount, emulsion, supply_time, output_time) values(0, 0.0, 0.0, current_timestamp, current_timestamp);
+
+CREATE TABLE second_washer(
+    id INT PRIMARY KEY,
+	amount DOUBLE PRECISION NOT NULL,
+  	emulsion DOUBLE PRECISION NOT NULL,
+	supply_time TIMESTAMP NOT NULL,
+  	output_time TIMESTAMP NOT NULL
+);
+
+INSERT INTO second_washer(id, amount, emulsion, supply_time, output_time) values(0, 0.0, 0.0, current_timestamp, current_timestamp);
+
+CREATE TABLE third_washer(
+    id INT PRIMARY KEY,
+	amount DOUBLE PRECISION NOT NULL,
+  	emulsion DOUBLE PRECISION NOT NULL,
+	supply_time TIMESTAMP NOT NULL,
+  	output_time TIMESTAMP NOT NULL
+);
+
+INSERT INTO third_washer(id, amount, emulsion, supply_time, output_time) values(0, 0.0, 0.0, current_timestamp, current_timestamp);

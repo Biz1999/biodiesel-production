@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 
 
-@FeignClient("reactorFeignClient", url = "\${biodiesel-reactor.url}")
+@FeignClient("reactorFeignClient", url = "\${biodiesel-reactor.baseUrl}")
 interface ReactorClient {
 
     @PostMapping("/v1/supply/oil", produces = [MediaType.APPLICATION_JSON_VALUE])

@@ -4,5 +4,6 @@ import java.time.LocalDateTime
 
 data class SupplyResponse(
     val amount: Double,
+    val returnedAmount: Double,
     val supplyTime: LocalDateTime
 )
