@@ -2,7 +2,7 @@ FROM adoptopenjdk/openjdk11:latest AS base
 ENV LANG C.UTF-8
 WORKDIR /app
 
-ADD target/biodiesel-oil-tank-0.0.1-SNAPSHOT.jar app.jar
+ADD target/biodiesel-dryer-0.0.1-SNAPSHOT.jar app.jar
 
 FROM adoptopenjdk/maven-openjdk AS build
 WORKDIR /src
@@ -12,7 +12,7 @@ RUN mvn -f /src/pom.xml clean install -U skipTests -DexcludedGroups="integration
 
 RUN rm -f /src/target/*soucers.jar
 RUN ls -lah /src/target
-RUN cp -a /src/target/biodiesel-oil-tank*.jar /app.jar
+RUN cp -a /src/target/biodiesel-dryer*.jar /app.jar
 
 FROM base as final
 
