@@ -22,6 +22,9 @@ class ReactorOutputService(
 
         val reactor = reactorRepository.getReactor()
 
+        if(reactor.amount.equals(0.0))
+            throw IllegalArgumentException("Reactor is empty")
+
         if(reactor.isNotProportional())
             throw IllegalArgumentException("Reactor is not proportional")
                 .also {
