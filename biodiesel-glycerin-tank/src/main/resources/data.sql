@@ -1,0 +1,1 @@
+INSERT INTO glycerin_tank(id, amount, supply_time) values(0, 0.0, current_timestamp) ON CONFLICT DO NOTHING;

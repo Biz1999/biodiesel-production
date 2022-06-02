@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS reactor(
+    id INT PRIMARY KEY,
+    status VARCHAR(255) NOT NULL,
+	amount DOUBLE PRECISION NOT NULL,
+	oil_amount DOUBLE PRECISION NOT NULL,
+	naoh_amount DOUBLE PRECISION NOT NULL,
+	etoh_amount DOUBLE PRECISION NOT NULL,
+	oil_supply_time TIMESTAMP NOT NULL,
+	naoh_supply_time TIMESTAMP NOT NULL,
+	etoh_supply_time TIMESTAMP NOT NULL,
+    output_time TIMESTAMP NOT NULL
+);
