@@ -1,7 +1,15 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: biodiesel-postgres
+  labels:
+    name: biodiesel-postgres
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: postgres-config
+  namespace: biodiesel-postgres
   labels:
     app: postgres
 data:
@@ -13,6 +21,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: postgres-pvc
+  namespace: biodiesel-postgres
 spec:
   storageClassName: manual
   accessModes:
@@ -25,6 +34,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: local-storage
+  namespace: biodiesel-postgres
 spec:
   storageClassName: manual
   capacity:
@@ -34,13 +44,6 @@ spec:
   hostPath:
     path: "/mnt/minikube/directory/structure/"
     type: DirectoryOrCreate
----
-kind: Namespace
-apiVersion: v1
-metadata:
-  name: biodiesel-postgres
-  labels:
-    name: biodiesel-postgres
 ---
 apiVersion: apps/v1
 kind: Deployment
