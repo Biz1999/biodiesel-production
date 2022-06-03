@@ -1,0 +1,42 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: biodiesel-third-washer
+  labels:
+    name: biodiesel-third-washer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: biodiesel-third-washer
+  namespace: biodiesel-third-washer
+  labels:
+    app: biodiesel-third-washer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: biodiesel-third-washer
+  template:
+    metadata:
+      labels:
+        app: biodiesel-third-washer
+    spec:
+      containers:
+        - name: biodiesel-third-washer
+          image: biz1999/biodiesel-third-washer:0.0.1
+          ports:
+            - name: web
+              containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: biodiesel-third-washer
+  namespace: biodiesel-third-washer
+spec:
+  selector:
+    app: biodiesel-third-washer
+  ports:
+    - port: 8080
+  type: ClusterIP

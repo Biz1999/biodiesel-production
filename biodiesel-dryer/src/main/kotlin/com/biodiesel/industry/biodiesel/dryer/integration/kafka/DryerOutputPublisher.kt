@@ -2,10 +2,10 @@ package com.biodiesel.industry.biodiesel.dryer.integration.kafka
 
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.context.annotation.Configuration
 import org.springframework.kafka.core.KafkaTemplate
+import org.springframework.stereotype.Component
 
-@Configuration
+@Component
 class DryerOutputPublisher(
     private val kafkaTemplate: KafkaTemplate<String, String>,
     @Value("\${topic.name.biodiesel.publisher}")

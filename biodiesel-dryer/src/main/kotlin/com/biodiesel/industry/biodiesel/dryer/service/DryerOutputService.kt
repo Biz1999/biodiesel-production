@@ -20,7 +20,7 @@ class DryerOutputService(
 ) {
     private val logger = LoggerFactory.getLogger(DryerOutputService::class.java)
 
-    @Scheduled(fixedRateString = "\${output.time}")
+    @Scheduled(fixedRateString = "\${output.time}", initialDelay = 5000)
     fun execute() {
         logger.info("Starting process to perform the dried Biodiesel output ...")
 

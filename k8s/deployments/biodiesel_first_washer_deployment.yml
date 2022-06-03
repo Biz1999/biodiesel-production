@@ -1,0 +1,42 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: biodiesel-first-washer
+  labels:
+    name: biodiesel-first-washer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: biodiesel-first-washer
+  namespace: biodiesel-first-washer
+  labels:
+    app: biodiesel-first-washer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: biodiesel-first-washer
+  template:
+    metadata:
+      labels:
+        app: biodiesel-first-washer
+    spec:
+      containers:
+        - name: biodiesel-first-washer
+          image: biz1999/biodiesel-first-washer:0.0.1
+          ports:
+            - name: web
+              containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: biodiesel-first-washer
+  namespace: biodiesel-first-washer
+spec:
+  selector:
+    app: biodiesel-first-washer
+  ports:
+    - port: 8080
+  type: ClusterIP
