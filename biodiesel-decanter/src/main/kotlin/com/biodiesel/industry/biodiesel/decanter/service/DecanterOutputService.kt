@@ -42,16 +42,16 @@ class DecanterOutputService(
         if (decanter.status == DecanterTank.Status.AVAILABLE)
             throw IllegalArgumentException("Decanter in supply")
 
-        val washerFirst = decanter.amount * 0.96 / 3
-        val washerSecond = decanter.amount * 0.96 / 3
-        val washerThird = decanter.amount * 0.96 / 3
-        val EtOHOutput = decanter.amount * 0.03
+        val washerFirst = decanter.amount * 0.96
+        //val washerSecond = decanter.amount * 0.96 / 3
+        //val washerThird = decanter.amount * 0.96 / 3
+        val EtOHOutputDryer = decanter.amount * 0.03
         val glycerinOutput = decanter.amount * 0.01
 
         firstWasherClient.performSupplyFirstWasher(DecanterOutputRequest(washerFirst))
-        secondWasherClient.performSupplySecondWasher(DecanterOutputRequest(washerSecond))
-        thirdWasherClient.performSupplyThirdWasher(DecanterOutputRequest(washerThird))
-        dryerOutputPublisher.publishMessage(DecanterOutputRequest(EtOHOutput).objectToJson())
+        //secondWasherClient.performSupplySecondWasher(DecanterOutputRequest(washerSecond))
+        //thirdWasherClient.performSupplyThirdWasher(DecanterOutputRequest(washerThird))
+        dryerOutputPublisher.publishMessage(DecanterOutputRequest(EtOHOutputDryer).objectToJson())
         glycerinOutputPublisher.publishMessage(DecanterOutputRequest(glycerinOutput).objectToJson())
 
         val updateOutputDecanter = decanterRepository.updateDecanterAmountByOutput(-decanter.amount, decanter, capacity)
