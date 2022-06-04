@@ -1,0 +1,42 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: biodiesel-etoh-dryer
+  labels:
+    name: biodiesel-etoh-dryer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: biodiesel-etoh-dryer
+  namespace: biodiesel-etoh-dryer
+  labels:
+    app: biodiesel-etoh-dryer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: biodiesel-etoh-dryer
+  template:
+    metadata:
+      labels:
+        app: biodiesel-etoh-dryer
+    spec:
+      containers:
+        - name: biodiesel-etoh-dryer
+          image: biz1999/biodiesel-etoh-dryer:0.0.2
+          ports:
+            - name: web
+              containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: biodiesel-etoh-dryer
+  namespace: biodiesel-etoh-dryer
+spec:
+  selector:
+    app: biodiesel-etoh-dryer
+  ports:
+    - port: 8080
+  type: ClusterIP

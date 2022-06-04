@@ -1,0 +1,42 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: biodiesel-reactor
+  labels:
+    name: biodiesel-reactor
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: biodiesel-reactor
+  namespace: biodiesel-reactor
+  labels:
+    app: biodiesel-reactor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: biodiesel-reactor
+  template:
+    metadata:
+      labels:
+        app: biodiesel-reactor
+    spec:
+      containers:
+        - name: biodiesel-reactor
+          image: biz1999/biodiesel-reactor:0.0.3
+          ports:
+            - name: web
+              containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: biodiesel-reactor
+  namespace: biodiesel-reactor
+spec:
+  selector:
+    app: biodiesel-reactor
+  ports:
+    - port: 8080
+  type: ClusterIP

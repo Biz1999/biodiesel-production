@@ -1,0 +1,1 @@
+INSERT INTO first_washer(id, amount, emulsion, supply_time, output_time) values(0, 0.0, 0.0, current_timestamp, current_timestamp) ON CONFLICT DO NOTHING;

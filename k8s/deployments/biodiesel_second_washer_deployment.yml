@@ -1,0 +1,42 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: biodiesel-second-washer
+  labels:
+    name: biodiesel-second-washer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: biodiesel-second-washer
+  namespace: biodiesel-second-washer
+  labels:
+    app: biodiesel-second-washer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: biodiesel-second-washer
+  template:
+    metadata:
+      labels:
+        app: biodiesel-second-washer
+    spec:
+      containers:
+        - name: biodiesel-second-washer
+          image: biz1999/biodiesel-second-washer:0.0.3
+          ports:
+            - name: web
+              containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: biodiesel-second-washer
+  namespace: biodiesel-second-washer
+spec:
+  selector:
+    app: biodiesel-second-washer
+  ports:
+    - port: 8080
+  type: ClusterIP

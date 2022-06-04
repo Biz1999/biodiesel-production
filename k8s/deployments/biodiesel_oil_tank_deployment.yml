@@ -1,0 +1,42 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: biodiesel-oil-tank
+  labels:
+    name: biodiesel-oil-tank
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: biodiesel-oil-tank
+  namespace: biodiesel-oil-tank
+  labels:
+    app: biodiesel-oil-tank
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: biodiesel-oil-tank
+  template:
+    metadata:
+      labels:
+        app: biodiesel-oil-tank
+    spec:
+      containers:
+        - name: biodiesel-oil-tank
+          image: biz1999/biodiesel-oil-tank:0.0.5
+          ports:
+            - name: web
+              containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: biodiesel-oil-tank
+  namespace: biodiesel-oil-tank
+spec:
+  selector:
+    app: biodiesel-oil-tank
+  ports:
+    - port: 8080
+  type: ClusterIP

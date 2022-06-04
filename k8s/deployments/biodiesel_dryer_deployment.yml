@@ -1,0 +1,42 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: biodiesel-dryer
+  labels:
+    name: biodiesel-dryer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: biodiesel-dryer
+  namespace: biodiesel-dryer
+  labels:
+    app: biodiesel-dryer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: biodiesel-dryer
+  template:
+    metadata:
+      labels:
+        app: biodiesel-dryer
+    spec:
+      containers:
+        - name: biodiesel-dryer
+          image: biz1999/biodiesel-dryer:0.0.10
+          ports:
+            - name: web
+              containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: biodiesel-dryer
+  namespace: biodiesel-dryer
+spec:
+  selector:
+    app: biodiesel-dryer
+  ports:
+    - port: 8080
+  type: ClusterIP

@@ -1,0 +1,42 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: biodiesel-decanter
+  labels:
+    name: biodiesel-decanter
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: biodiesel-decanter
+  namespace: biodiesel-decanter
+  labels:
+    app: biodiesel-decanter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: biodiesel-decanter
+  template:
+    metadata:
+      labels:
+        app: biodiesel-decanter
+    spec:
+      containers:
+        - name: biodiesel-decanter
+          image: islansilva/biodiesel-decanter:0.0.4
+          ports:
+            - name: web
+              containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: biodiesel-decanter
+  namespace: biodiesel-decanter
+spec:
+  selector:
+    app: biodiesel-decanter
+  ports:
+    - port: 8080
+  type: ClusterIP

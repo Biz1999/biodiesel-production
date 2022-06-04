@@ -1,0 +1,42 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: biodiesel-naoh-tank
+  labels:
+    name: biodiesel-naoh-tank
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: biodiesel-naoh-tank
+  namespace: biodiesel-naoh-tank
+  labels:
+    app: biodiesel-naoh-tank
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: biodiesel-naoh-tank
+  template:
+    metadata:
+      labels:
+        app: biodiesel-naoh-tank
+    spec:
+      containers:
+        - name: biodiesel-naoh-tank
+          image: biz1999/biodiesel-naoh-tank:0.0.2
+          ports:
+            - name: web
+              containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: biodiesel-naoh-tank
+  namespace: biodiesel-naoh-tank
+spec:
+  selector:
+    app: biodiesel-naoh-tank
+  ports:
+    - port: 8080
+  type: ClusterIP

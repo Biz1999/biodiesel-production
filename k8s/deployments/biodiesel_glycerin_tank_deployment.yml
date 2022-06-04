@@ -1,0 +1,42 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: biodiesel-glycerin-tank
+  labels:
+    name: biodiesel-glycerin-tank
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: biodiesel-glycerin-tank
+  namespace: biodiesel-glycerin-tank
+  labels:
+    app: biodiesel-glycerin-tank
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: biodiesel-glycerin-tank
+  template:
+    metadata:
+      labels:
+        app: biodiesel-glycerin-tank
+    spec:
+      containers:
+        - name: biodiesel-glycerin-tank
+          image: biz1999/biodiesel-glycerin-tank:0.0.2
+          ports:
+            - name: web
+              containerPort: 8080
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: biodiesel-glycerin-tank
+  namespace: biodiesel-glycerin-tank
+spec:
+  selector:
+    app: biodiesel-glycerin-tank
+  ports:
+    - port: 8080
+  type: ClusterIP
