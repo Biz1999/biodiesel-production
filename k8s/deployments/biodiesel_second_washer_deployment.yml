@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: biodiesel-second-washer
-          image: biz1999/biodiesel-second-washer:0.0.1
+          image: biz1999/biodiesel-second-washer:0.0.3
           ports:
             - name: web
               containerPort: 8080

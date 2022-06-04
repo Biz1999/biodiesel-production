@@ -13,7 +13,7 @@ class ReactorController(
 ): ReactorApi {
     private val logger = LoggerFactory.getLogger(ReactorController::class.java)
 
-    // @Scheduled(fixedDelayString = ("\${output.time}"), initialDelay = 2000)
+    @Scheduled(fixedDelayString = ("\${output.time}"), initialDelay = 2000)
     override fun performProcessing(): ResponseEntity<*> {
         logger.info("Starting process to perform reactor output to decanter...")
 

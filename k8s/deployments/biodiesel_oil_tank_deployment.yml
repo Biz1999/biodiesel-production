@@ -13,7 +13,7 @@ metadata:
   labels:
     app: biodiesel-oil-tank
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: biodiesel-oil-tank
@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: biodiesel-oil-tank
-          image: biz1999/biodiesel-oil-tank:0.0.2
+          image: biz1999/biodiesel-oil-tank:0.0.5
           ports:
             - name: web
               containerPort: 8080

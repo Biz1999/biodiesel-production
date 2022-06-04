@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: biodiesel-third-washer
-          image: biz1999/biodiesel-third-washer:0.0.1
+          image: biz1999/biodiesel-third-washer:0.0.2
           ports:
             - name: web
               containerPort: 8080

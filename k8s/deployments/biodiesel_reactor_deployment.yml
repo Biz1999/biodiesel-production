@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: biodiesel-reactor
-          image: biz1999/biodiesel-reactor:0.0.1
+          image: biz1999/biodiesel-reactor:0.0.3
           ports:
             - name: web
               containerPort: 8080

@@ -63,6 +63,7 @@ spec:
       containers:
         - name: postgres
           image: postgres:10.4
+          args: ["-c", "max_connections=1000"]
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432
