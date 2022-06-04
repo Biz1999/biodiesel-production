@@ -1,0 +1,1 @@
+INSERT INTO decanter (id, amount, status, supply_time, output_time) VALUES (0, 0,'AVAILABLE', now(), now()) ON CONFLICT DO NOTHING;
